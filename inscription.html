@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Inscription</title>
+	<link rel="stylesheet" href="style-base.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<a href="index.html">Accueil</a><br>
+	<a href="connection.html">Connection</a>
+	<form >
+		<fieldset>
+			<legend>civilitée<abbr title="Ce champ est obligatoire">*</abbr></legend>
+			<input type="radio" required name="civilitée" id='sx1' value="Mme"><label for='sx1'><abbr>Mm</abbr></label>
+			<input type="radio" required name="civilitée" id='sx2' value="Mr"><label for="sx2"><abbr>Mr</abbr></label>
+		</fieldset>
+		<label for="nom">Nom<abbr title="coucou">*</abbr></label>
+		<input type="text" required name="nom" id="nom" placeholder="entrez votre nom" value="Cyr"><br>
+		<label for="prenom">Prénom<abbr title="ce champs est obligatoire">*</abbr></label>
+		<input type="text" required name="prenom" id="prenom" placeholder="entrez votre prénom" value="Den"><br>
+		<label for="pseudo">Pseudo<abbr title="ce champs est obligatoire et vous permetra de vous connecter">*</abbr></label>
+		<input type="text" required name="pseudo" id="pseudo" placeholder="entrez votre identifiant de connection" value="see"><br>
+		<label for="email">Email<abbr title="ce champs est obligatoire">*</abbr></label>
+		<input type="email" required name="email" id="email" placeholder="entrez votre adresse mail" value="Cyrden@hhh"><br>
+		<label for="tel">Tel<abbr title="ce champs est obligatoire">*</abbr></label>
+		<input type="text" required name="tel" id="tel" placeholder="entrez votre numero de tel" value="1234567890"><br>
+		<input type="submit" name="submit" value="Submit" >
+		<!-- <button id="subm" >Submit</button> -->
+	</form>
+	<button id="coucou">coucou</button>
+</body>
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</html>
