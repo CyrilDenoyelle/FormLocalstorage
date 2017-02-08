@@ -110,10 +110,9 @@ $(document).ready(function(){
 				}else {
 					alert('ERREURE MDP OU LOGIN')
 				}
-			}else{
-				alert('ERREURE MDP OU LOGIN')
 			}
 		}
+		alert('ERREURE MDP OU LOGIN')
 		
 	})
 
