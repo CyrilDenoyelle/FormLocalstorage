@@ -25,10 +25,14 @@
 		<input type="email" required name="email" id="email" placeholder="entrez votre adresse mail" value="Cyrden@hhh"><br>
 		<label for="tel">Tel<abbr title="ce champs est obligatoire">*</abbr></label>
 		<input type="text" required name="tel" id="tel" placeholder="entrez votre numero de tel" value="1234567890"><br>
-		<input type="submit" name="submit" value="Submit" >
-		<!-- <button id="subm" >Submit</button> -->
+
+		<label for="password">Mot de passe</label>
+		<input type="password" id="password" value="Azerty123456789" name="password">
+		<label for="confirmPasswordInput">Confirmez le mot de passe:</label>
+		<input type="password" id="confirmPasswordInput" value="Azerty123456789" name="confirmPasswordInput">
+		<div class="" id="passwordStrength"></div>
+		<input type="submit" class="colors" name="submit" value="Submit">
 	</form>
-	<button id="coucou">coucou</button>
 </body>
 <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="script.js"></script>
