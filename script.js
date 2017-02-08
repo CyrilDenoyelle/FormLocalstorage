@@ -98,21 +98,19 @@ $(document).ready(function(){
 		// console.log('coucou')
 		var ok = false;
 
-		var pseudo = $('#pseudo').val();
-		var email = $('#email').val();
+		var pseudo = $('#pseudoemail').val();
 		var password = $('#password').val();
 
 		for(var i=0; i<users.length; i++){
-			if(users[i].email == email && users[i].pseudo === pseudo || users[i].email == email && pseudo === '' || users[i].pseudo === pseudo && users[i].email == email){
+			if(users[i].pseudo === pseudo || users[i].email == pseudo){
 				if(users[i].password == password){
 					alert('OK');
 					$(location).attr('href',"reussiteconnection.html");//renvoyer vers la page de "CONNECTÉ!"
-				}else {
-					alert('ERREURE MDP OU LOGIN')
+				}else if(users[i].password !== password){
+					console.log('ERREURE MDP OU LOGIN')
 				}
 			}
 		}
-		alert('ERREURE MDP OU LOGIN')
 		
 	})
 
