@@ -108,7 +108,11 @@ $(document).ready(function(){
 				if(users[i].password == password){
 					alert('OK');
 					$(location).attr('href',"reussiteconnection.html");//renvoyer vers la page de "CONNECTÉ!"
+				}else {
+					alert('ERREURE MDP OU LOGIN')
 				}
+			}else{
+				alert('ERREURE MDP OU LOGIN')
 			}
 		}
 		
