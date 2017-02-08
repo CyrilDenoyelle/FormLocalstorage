@@ -104,7 +104,6 @@ $(document).ready(function(){
 
 		for(var i=0; i<users.length; i++){
 			if(users[i].email == email && users[i].pseudo === pseudo || users[i].email == email && pseudo === '' || users[i].pseudo === pseudo && users[i].email == email){
-				console.log(users[i].password)
 				if(users[i].password == password){
 					alert('OK');
 					$(location).attr('href',"reussiteconnection.html");//renvoyer vers la page de "CONNECTÉ!"
