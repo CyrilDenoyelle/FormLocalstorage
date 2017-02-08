@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	// console.log('coucoucou')
 	$('#password, #confirmPasswordInput').on('keyup', function(e) {
 		if ($('#password').val() != '' && $('#confirmPasswordInput').val() != '' && $('#password').val() != $('#confirmPasswordInput').val()) {
 			$('#passwordStrength').html('Vos passwords ne correspondent pas');
@@ -21,25 +21,23 @@ $(document).ready(function(){
 	});
 
 	if(!localStorage.getItem("nb")){
-		console.log('assigne nb');
+		// console.log('assigne nb');
 		localStorage.setItem("nb", 1);
 	}
 	if(!localStorage.getItem("users")){
-		console.log('assigne users');
+		// console.log('assigne users');
 		var users = [];
 		localStorage.setItem('users', JSON.stringify(users));
 	}
 	else if(localStorage.getItem("users")){
-		console.log('assigne pas users');
 		var users = JSON.parse(localStorage.getItem("users"));
-		console.log(users);
 	}
 
-	$('form').on('submit', function(event){
+	$('#inscr').on('submit', function(event){
 		event.preventDefault();
 		var ok = false;
 
-		if($('#sx1').is(':checked')){
+		if($('#sx1').is(':checked')){	
 			var sexe = 'Mm'
 		}
 		else if($('#sx2').is(':checked')){
@@ -49,11 +47,15 @@ $(document).ready(function(){
 		var prenom = $('#prenom').val();
 		var pseudo = $('#pseudo').val();
 		var email = $('#email').val();
+		var citi
 		var tel = $('#tel').val();
 		var password = $('#password').val();
 		var confirmPasswordInput = $('#confirmPasswordInput').val();
 
-		if(users.length !== 0){ //si des utilsateurs se sont deja inscript on compare avec les donnée préventes
+		if(users.length === 0){// si non on inscript
+			ok = true;
+		}
+		else{//si des utilsateurs se sont deja inscript on compare avec les donnée préventes
 			var incr = 0;
 			for(var i=0; i<users.length; i++){
 				if(users[i].email == email){
@@ -65,14 +67,11 @@ $(document).ready(function(){
 					alert('pseudo deja pris');
 				}
 			}
-			if(incr === 0){// si l'email et le pseudo sont unique on inscript
+			if(incr === 0){
 				ok = true;
 			}
-		}else{// si non on inscript
-			ok = true;
 		}
 		if(ok){
-			alert('vous etes bien incriptionné')
 			var i=localStorage.getItem("nb");
 			i++;
 			localStorage.setItem("nb", i);
@@ -88,11 +87,34 @@ $(document).ready(function(){
 			}
 			users.push(obj);
 			localStorage.setItem('users', JSON.stringify(users));
+			alert("vous etes bien incriptionné");
+			$(location).attr('href',"connection.html");//renvoyer vers la page de connection
 		}
 
 	});
 
-	var colors = ["orange", "pink", "yellow", "yellow", "orange"];
+	$('#connect').on('submit', function (event) {
+		event.preventDefault();
+		// console.log('coucou')
+		var ok = false;
+
+		var pseudo = $('#pseudo').val();
+		var email = $('#email').val();
+		var password = $('#password').val();
+
+		for(var i=0; i<users.length; i++){
+			if(users[i].email == email && users[i].pseudo === pseudo || users[i].email == email && pseudo === '' || users[i].pseudo === pseudo && users[i].email == email){
+				console.log(users[i].password)
+				if(users[i].password == password){
+					alert('OK');
+					$(location).attr('href',"reussiteconnection.html");//renvoyer vers la page de "CONNECTÉ!"
+				}
+			}
+		}
+		
+	})
+
+	var colors = ["#DF06FF", "#50FFFA", "#FFFC00", "#FFD300", "#2116FF"];
 	function randcol (arg) {
 		if(!prevrand){
 			var prevrand = arg.length+1
@@ -109,7 +131,7 @@ $(document).ready(function(){
 		$('a').each(function(){
 			$(this).css("color", randcol(colors));
 		});
-		$('input:submit').each(function(){
+		$('.colors').each(function(){
 			$('.colors').css("color", randcol(colors))
 		});
 	}, 125);
