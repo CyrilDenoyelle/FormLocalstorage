@@ -101,6 +101,10 @@ $(document).ready(function(){
 		var pseudo = $('#pseudoemail').val();
 		var password = $('#password').val();
 
+		if(!pseudo || !password){
+			alert('il manque quelques chose, non ?');
+		}
+
 		for(var i=0; i<users.length; i++){
 			if(users[i].pseudo === pseudo || users[i].email == pseudo){
 				if(users[i].password == password){
@@ -111,7 +115,6 @@ $(document).ready(function(){
 				}
 			}
 		}
-		
 	})
 
 	var colors = ["#DF06FF", "#50FFFA", "#FFFC00", "#FFD300", "#2116FF"];
@@ -131,15 +134,9 @@ $(document).ready(function(){
 		$('a').each(function(){
 			$(this).css("color", randcol(colors));
 		});
-		;$('.colors').each(function(){
-			$(this).css("color", randcol(colors))
+		$('.colors').each(function(){
+			$(this).css("color", randcol(colors));
 		});
-		$('h1.colors').each(function(){
-			$(this).css("color", randcol(colors))
-		});
-		$('span.colors').each(function(){
-			$(this).css("color", randcol(colors))
-		})
 	}, 125);
 
 })
