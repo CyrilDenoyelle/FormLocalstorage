@@ -47,7 +47,7 @@ $(document).ready(function(){
 		var prenom = $('#prenom').val();
 		var pseudo = $('#pseudo').val();
 		var email = $('#email').val();
-		var citi
+		var citi;
 		var tel = $('#tel').val();
 		var password = $('#password').val();
 		var confirmPasswordInput = $('#confirmPasswordInput').val();
@@ -95,7 +95,7 @@ $(document).ready(function(){
 
 	$('#connect').on('submit', function (event) {
 		event.preventDefault();
-		// console.log('coucou')
+		// console.log('coucou');
 		var ok = false;
 
 		var pseudo = $('#pseudoemail').val();
@@ -104,7 +104,9 @@ $(document).ready(function(){
 		if(!pseudo || !password){
 			alert('il manque quelques chose, non ?');
 		}
-
+		if(!pseudo || !password){
+			alert('il manque quelques chose, non ?');
+		}
 		for(var i=0; i<users.length; i++){
 			if(users[i].pseudo === pseudo || users[i].email == pseudo){
 				if(users[i].password == password){
@@ -115,7 +117,7 @@ $(document).ready(function(){
 				}
 			}
 		}
-	})
+	});
 
 	var colors = ["#DF06FF", "#50FFFA", "#FFFC00", "#FFD300", "#2116FF"];
 	function randcol (arg) {
@@ -135,7 +137,7 @@ $(document).ready(function(){
 			$(this).css("color", randcol(colors));
 		});
 		$('.colors').each(function(){
-			$('.colors').css("color", randcol(colors))
+			$(this).css("color", randcol(colors))
 		});
 	}, 125);
 
