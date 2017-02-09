@@ -131,9 +131,15 @@ $(document).ready(function(){
 		$('a').each(function(){
 			$(this).css("color", randcol(colors));
 		});
-		$('.colors').each(function(){
-			$('.colors').css("color", randcol(colors))
+		;$('.colors').each(function(){
+			$(this).css("color", randcol(colors))
 		});
+		$('h1.colors').each(function(){
+			$(this).css("color", randcol(colors))
+		});
+		$('span.colors').each(function(){
+			$(this).css("color", randcol(colors))
+		})
 	}, 125);
 
 })
