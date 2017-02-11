@@ -24,10 +24,10 @@ button.btngen {
 	padding:6px 0;
 	border-radius:2px;
 	box-shadow:3px 4px 12px #999;
-	font:bold 13px Arial;
+	font:bold 16px Arial;
 	color: white;
 	margin: 2px;
-	/*transition: background-color 0.1s*/
+	transition: font-size 0.5s;
 }
 
 #rand {
@@ -52,7 +52,7 @@ button.btngen {
 }
 
 .btngen.active {
-	font-size: 25px;
-	text-transform: uppercase;
+	font-size: 20px;
 	text-decoration: line-through;
+	transition: font-size 0.5s;
 }

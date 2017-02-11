@@ -177,10 +177,11 @@
 				var all = ['Quentin', 'Cyril', 'Lesly', 'Carole', 'Jef', 'Odile', 'Patrick', 'Jérome', 'Raphaèl', 'Julien', 'David', 'Géna', 'Kévin', 'Thibault', 'Aymeric', 'Victor', 'Laurent', 'Allan'];
 				select = all;
 				dejapass = []
+				$('#contentconnec').append('<div id="receiverbtn" class="flexB">');
 				for(i=0; i<select.length; i++){
-					$('#contentconnec').append($('<button/>').addClass('btngen paspasse').text(select[i]));
+					$('#receiverbtn').append($('<button/>').addClass('btngen paspasse').text(select[i]));
 				};
-				$('#contentconnec').append($('<button/>').text('LANCER RANDOM').attr('title', 'click sur les gens a sortir du random').addClass('bgcolors').attr('id', 'rand').on('click', function(){
+				$('#receiverbtn').append($('<button/>').text('LANCER RANDOM').attr('title', 'click sur les gens a sortir du random').addClass('bgcolors').attr('id', 'rand').on('click', function(){
 					if(dejapass.length < select.length){
 						var genRand = auHasard(select);
 						while(dejapass.includes(genRand)){
