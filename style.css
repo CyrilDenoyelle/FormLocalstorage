@@ -1,3 +1,38 @@
+
+.GG {
+	margin: 30px 0;
+	font-size: 500%
+}
+
+@media (min-width: 300px) {
+	.GG {
+		font-size: 1000%;
+	}
+}
+
+@media (min-width: 500px) {
+	.GG {
+		font-size: 1500%
+	}
+}
+
+@media (min-width: 750px) {
+	.GG {
+		font-size: 2250%
+	}
+}
+
+@media (min-width: 1000px) {
+	.GG {
+		font-size: 3000%
+	}
+}
+@media (min-width: 1200px) {
+	.GG {
+		font-size: 4000%
+	}
+}
+
 .container{
 	margin: auto 30%;
 }
@@ -19,7 +54,7 @@ body {
 }
 
 button.btngen {
-	width:110px;
+	width: 150px;
 	border:none;
 	padding:6px 0;
 	border-radius:2px;
@@ -31,7 +66,7 @@ button.btngen {
 }
 
 #rand {
-	width:110px;
+	width: 150px;
 	border:none;
 	padding:6px 0;
 	border-radius:2px;
