@@ -151,7 +151,7 @@
 			}, 100);
 		},
 		connectstatus:function(){
-			if(!localStorage.consta || localStorage.getItem("consta") == 0){
+			if(!localStorage.consta || localStorage.getItem("consta") != "Y88T*)m.y%8E=%By+{.6@VsoR5{883R0+oi;c&UA81Z2Y,<9d_NFdwyjl]Qx)EmxM(0Xym,VM@aH9L.*wU-5-p%/8Eb5357aG67G[DQG./oX=@eE28!IkqZ0q4vzQ^Y#rSfo02vs=6*0<[5!fQ2>;5s3J61V5mUKv1PeX[a0kCIB)1o~N5DL6n{E0_U@3MmG258@MT/z@$8{nq&^Dd@7=E8A<1vwmsfYt7880#eF5>2ybK1L09~oq7b-O0!X4dIf"){
 				$('#connectstatus').html("<a href='inscription.html' id='lienincrip'>Inscription</a><br><a href='connection.html' id='lienconnec'>Conection</a>");
 				localStorage.setItem("consta", 0);
 			}else if(localStorage.consta == "Y88T*)m.y%8E=%By+{.6@VsoR5{883R0+oi;c&UA81Z2Y,<9d_NFdwyjl]Qx)EmxM(0Xym,VM@aH9L.*wU-5-p%/8Eb5357aG67G[DQG./oX=@eE28!IkqZ0q4vzQ^Y#rSfo02vs=6*0<[5!fQ2>;5s3J61V5mUKv1PeX[a0kCIB)1o~N5DL6n{E0_U@3MmG258@MT/z@$8{nq&^Dd@7=E8A<1vwmsfYt7880#eF5>2ybK1L09~oq7b-O0!X4dIf"){
