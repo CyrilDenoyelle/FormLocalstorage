@@ -5,6 +5,12 @@
 	display: flex;
 	flex-wrap: wrap;
 }
+
+.flexBC {
+	display: flex;
+	flex-flow: column wrap;
+}
+
 body {
 	display: flex;
 	flex-direction: column;
