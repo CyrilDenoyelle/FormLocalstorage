@@ -126,7 +126,7 @@
 			})
 		},
 		colorinit:function(){
-			var colors = ["#DF06FF", "#50FFFA", "#FFFC00", "#FFD300", "#2116FF"];
+			var colors = ["DF06FF", "50FFFA", "FFFC00", "FFD300", "2116FF"];
 			function randcol (arg) {
 				if(!prevrand){
 					var prevrand = arg.length+1
@@ -140,13 +140,15 @@
 			};
 			var inter = setInterval(function(){
 				$('a').each(function(){
-					$(this).css("color", randcol(colors));
+					$(this).css("color", '#'+randcol(colors));
 				});
+				$('#linkfavicon').attr("href", randcol(colors)+'.ico');
+
 				$('.colors').each(function(){
-					$(this).css("color", randcol(colors));
+					$(this).css("color", '#'+randcol(colors));
 				});
 				$('.bgcolors').each(function(){
-					$(this).css("background-color", randcol(colors));
+					$(this).css("background-color", '#'+randcol(colors));
 				});
 			}, 100);
 		},
