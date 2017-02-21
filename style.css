@@ -62,7 +62,7 @@ button.btngen {
 	font:bold 16px Arial;
 	color: white;
 	margin: 2px;
-	transition: font-size 0.5s;
+	transition: font-size 2s;
 }
 
 #rand {
@@ -89,5 +89,5 @@ button.btngen {
 .btngen.active {
 	font-size: 20px;
 	text-decoration: line-through;
-	transition: font-size 0.5s;
+	transition: font-size 2s;
 }

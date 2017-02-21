@@ -176,38 +176,56 @@
 						dejapass.splice(dejapass.indexOf(inp), 1);
 					}
 				}
-				var all = ['Quentin', 'Cyril', 'Lesly', 'Carole', 'Jef', 'Odile', 'Patrick', 'Jérome', 'Raphaèl', 'Julien', 'David', 'Géna', 'Kévin', 'Thibault', 'Aymeric', 'Victor', 'Laurent', 'Allan'];
-				select = all;
-				dejapass = []
-				$('#contentconnec').append('<div id="receiverbtn" class="flexB">');
-				for(i=0; i<select.length; i++){
-					$('#receiverbtn').append($('<button/>').addClass('btngen paspasse').text(select[i]));
-				};
-				$('#receiverbtn').append($('<button/>').text('LANCER RANDOM').attr('title', 'click sur les gens a sortir du random').addClass('bgcolors').attr('id', 'rand').on('click', function(){
-					if(dejapass.length < select.length){
-						var genRand = auHasard(select);
-						while(dejapass.includes(genRand)){
-							genRand = auHasard(select);
-						}
-						$('.btngen').each(function(){
-							if($(this).text()==genRand){
-								$(this).addClass('bgcolors');
-							}
-						})
-						$('#genRand').append($('<div/>').addClass('genchoisi colors').text(genRand));
-						dejapass.push(genRand);
+				var all = ['Quentin', 'Cyril', 'Lesly', 'Carole', 'Jef', 'Odile', 'Patrick', 'Jérome', 'Raphaël', 'Julien', 'David', 'Géna', 'Kévin', 'Thibault', 'Aymeric', 'Victor', 'Laurent', 'Allan'];
+				$('#contentconnec').append($("<form/>").attr('id', "validgeninp").append($("<labell/>").text("randomqui ?")).append($("<textarea/>").css("width", "100%").css("height", "100px").attr('id', "geninp")).append($("<input/>").attr("type", "submit").val("Validay")));
+
+				// if(!localStorage.getItem("saverand")){
+				// 	localStorage.setItem("saverand", );
+				// }
+
+				$('#validgeninp').on('submit', function (e) {
+					// $('#validgeninp').remove();
+					e.preventDefault();
+					var entree = $('#geninp').val();
+					if(!entree){
+						alert("entrez des gens ou des choses a randomiser");
 					}else{
+						select = entree.split(" ");
+						console.log(select);
 						dejapass = [];
-						$('.btngen').removeClass('bgcolors');
-						$('.btngen').css('background-color', 'buttonface');
-						$('#genRand').empty()
+						$('#contentconnec').html('<div id="receiverbtn" class="flexB">');
+						for(i=0; i<select.length; i++){
+							$('#receiverbtn').append($('<button/>').addClass('btngen paspasse').text(select[i]));
+						};
+						$('#receiverbtn').append($('<button/>').text('LANCER RANDOM').attr('title', 'click sur les gens a sortir du random').addClass('bgcolors').attr('id', 'rand').on('click', function(){
+							if(dejapass.length < select.length){
+								var genRand = auHasard(select);
+								while(dejapass.includes(genRand)){
+									genRand = auHasard(select);
+								}
+								$('.btngen').each(function(){
+									if($(this).text()==genRand){
+										$(this).addClass('bgcolors');
+									}
+								})
+								$('#genRand').append($('<div/>').addClass('genchoisi colors').text(genRand));
+								dejapass.push(genRand);
+							}else{
+								dejapass = [];
+								$('.btngen').removeClass('bgcolors');
+								$('.btngen').css('background-color', 'buttonface');
+								$('#genRand').empty()
+							}
+
+						}));
+						$('.btngen').on('click', function(){
+							$(this).toggleClass('active');
+							toggleGen($(this).text());
+						})
 					}
 					
-				}))
-				$('.btngen').on('click', function(){
-					$(this).toggleClass('active');
-					toggleGen($(this).text());
 				})
+				
 				// $('#contentconnec').html()
 			}
 		}
