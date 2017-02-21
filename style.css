@@ -64,7 +64,7 @@ button.btngen {
 	margin: 2px;
 	transition: font-size 2s;
 }
-
+#changerand,
 #rand {
 	width: 150px;
 	border:none;

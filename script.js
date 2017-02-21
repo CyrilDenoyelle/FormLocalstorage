@@ -153,35 +153,49 @@
 			}, 100);
 		},
 		connectstatus:function(){
-			if(!localStorage.consta || localStorage.getItem("consta") != "Y88T*)m.y%8E=%By+{.6@VsoR5{883R0+oi;c&UA81Z2Y,<9d_NFdwyjl]Qx)EmxM(0Xym,VM@aH9L.*wU-5-p%/8Eb5357aG67G[DQG./oX=@eE28!IkqZ0q4vzQ^Y#rSfo02vs=6*0<[5!fQ2>;5s3J61V5mUKv1PeX[a0kCIB)1o~N5DL6n{E0_U@3MmG258@MT/z@$8{nq&^Dd@7=E8A<1vwmsfYt7880#eF5>2ybK1L09~oq7b-O0!X4dIf"){
-				$('#connectstatus').html("<a href='inscription.html' id='lienincrip'>Inscription</a><br><a href='connection.html' id='lienconnec'>Conection</a>");
-				localStorage.setItem("consta", 0);
-			}else if(localStorage.consta == "Y88T*)m.y%8E=%By+{.6@VsoR5{883R0+oi;c&UA81Z2Y,<9d_NFdwyjl]Qx)EmxM(0Xym,VM@aH9L.*wU-5-p%/8Eb5357aG67G[DQG./oX=@eE28!IkqZ0q4vzQ^Y#rSfo02vs=6*0<[5!fQ2>;5s3J61V5mUKv1PeX[a0kCIB)1o~N5DL6n{E0_U@3MmG258@MT/z@$8{nq&^Dd@7=E8A<1vwmsfYt7880#eF5>2ybK1L09~oq7b-O0!X4dIf"){
+			function auHasard(input){
+				return input[Math.floor(Math.random()*input.length)];
+			}
+			function toggleGen(inp){
+				if(select.includes(inp)){
+					select.splice(select.indexOf(inp), 1);
+				}else{
+					select.push(inp);
+				}
+				if(dejapass.includes(inp)){
+					dejapass.splice(dejapass.indexOf(inp), 1);
+				}
+			}
+			function randDisplayInit() {
 				$('#connectstatus').html($("<a/>").text('Déconnection').attr('href', "connection.html").attr('id', 'liendeconnec').on('click', function(e){
 					e.preventDefault();
 					localStorage.setItem("consta", 0);
 					$(location).attr('href', "connection.html");
-				}));
-				function auHasard(input){
-					return input[Math.floor(Math.random()*input.length)];
-				}
-				function toggleGen(inp){
-					// console.log(select.indexOf(inp))
-					if(select.includes(inp)){
-						select.splice(select.indexOf(inp), 1);
-					}else{
-						select.push(inp);
-					}
-					if(dejapass.includes(inp)){
-						dejapass.splice(dejapass.indexOf(inp), 1);
-					}
-				}
+				}))
 				var all = ['Quentin', 'Cyril', 'Lesly', 'Carole', 'Jef', 'Odile', 'Patrick', 'Jérome', 'Raphaël', 'Julien', 'David', 'Géna', 'Kévin', 'Thibault', 'Aymeric', 'Victor', 'Laurent', 'Allan'];
-				$('#contentconnec').append($("<form/>").attr('id', "validgeninp").append($("<labell/>").text("randomqui ?")).append($("<textarea/>").css("width", "100%").css("height", "100px").attr('id', "geninp")).append($("<input/>").attr("type", "submit").val("Validay")));
+				$('#contentconnec')
+				.empty()
+				.append($("<form/>")
+					.attr('id', "validgeninp")
+					.append($("<labell/>")
+						.text("randomqui ? (séparé d'un /)"))
+					.append($("<textarea/>")
+						.css("width", "100%")
+						.css("height", "100px")
+						.attr('id', "geninp"))
+					.append($("<input/>")
+						.attr("type", "submit")
+						.val("Validay")));
 
-				// if(!localStorage.getItem("saverand")){
-				// 	localStorage.setItem("saverand", );
-				// }
+			}
+			if(!localStorage.consta || localStorage.getItem("consta") != "Y88T*)m.y%8E=%By+{.6@VsoR5{883R0+oi;c&UA81Z2Y,<9d_NFdwyjl]Qx)EmxM(0Xym,VM@aH9L.*wU-5-p%/8Eb5357aG67G[DQG./oX=@eE28!IkqZ0q4vzQ^Y#rSfo02vs=6*0<[5!fQ2>;5s3J61V5mUKv1PeX[a0kCIB)1o~N5DL6n{E0_U@3MmG258@MT/z@$8{nq&^Dd@7=E8A<1vwmsfYt7880#eF5>2ybK1L09~oq7b-O0!X4dIf")
+			{
+				$('#connectstatus').html("<a href='inscription.html' id='lienincrip'>Inscription</a><br><a href='connection.html' id='lienconnec'>Conection</a>");
+				localStorage.setItem("consta", 0);
+			}else if(localStorage.consta == "Y88T*)m.y%8E=%By+{.6@VsoR5{883R0+oi;c&UA81Z2Y,<9d_NFdwyjl]Qx)EmxM(0Xym,VM@aH9L.*wU-5-p%/8Eb5357aG67G[DQG./oX=@eE28!IkqZ0q4vzQ^Y#rSfo02vs=6*0<[5!fQ2>;5s3J61V5mUKv1PeX[a0kCIB)1o~N5DL6n{E0_U@3MmG258@MT/z@$8{nq&^Dd@7=E8A<1vwmsfYt7880#eF5>2ybK1L09~oq7b-O0!X4dIf")
+			{
+				
+				randDisplayInit();
 
 				$('#validgeninp').on('submit', function (e) {
 					// $('#validgeninp').remove();
@@ -190,34 +204,53 @@
 					if(!entree){
 						alert("entrez des gens ou des choses a randomiser");
 					}else{
-						select = entree.split(" ");
+						select = entree.split("/");
 						console.log(select);
 						dejapass = [];
 						$('#contentconnec').html('<div id="receiverbtn" class="flexB">');
 						for(i=0; i<select.length; i++){
-							$('#receiverbtn').append($('<button/>').addClass('btngen paspasse').text(select[i]));
+							$('#receiverbtn')
+							.append($('<button/>')
+								.addClass('btngen paspasse')
+								.text(select[i]));
 						};
-						$('#receiverbtn').append($('<button/>').text('LANCER RANDOM').attr('title', 'click sur les gens a sortir du random').addClass('bgcolors').attr('id', 'rand').on('click', function(){
-							if(dejapass.length < select.length){
-								var genRand = auHasard(select);
-								while(dejapass.includes(genRand)){
-									genRand = auHasard(select);
-								}
-								$('.btngen').each(function(){
-									if($(this).text()==genRand){
-										$(this).addClass('bgcolors');
+						$('#receiverbtn')
+						.append($('<button/>')
+							.text('LANCER RANDOM')
+							.attr('title', 'click sur les gens a sortir du random')
+							.attr('id', 'rand')
+							.addClass('bgcolors')
+							.on('click', function(){
+								if(dejapass.length < select.length){
+									var genRand = auHasard(select);
+									while(dejapass.includes(genRand)){
+										genRand = auHasard(select);
 									}
-								})
-								$('#genRand').append($('<div/>').addClass('genchoisi colors').text(genRand));
-								dejapass.push(genRand);
-							}else{
-								dejapass = [];
-								$('.btngen').removeClass('bgcolors');
-								$('.btngen').css('background-color', 'buttonface');
-								$('#genRand').empty()
-							}
+									$('.btngen').each(function(){
+										if($(this).text()==genRand){
+											$(this).addClass('bgcolors');
+										}
+									})
+									$('#genRand').append($('<div/>')
+										.addClass('genchoisi colors')
+										.text(genRand));
+									dejapass.push(genRand);
+								}else{
+									dejapass = [];
+									$('.btngen').removeClass('bgcolors');
+									$('.btngen').css('background-color', 'buttonface');
+									$('#genRand').empty();
+								}
 
-						}));
+							}))
+						.append($('<button/>')
+							.text('CHANGER')
+							.attr('id', 'changerand')
+							.addClass('bgcolors')
+							.on('click', function(){
+								randDisplayInit();
+
+							}));
 						$('.btngen').on('click', function(){
 							$(this).toggleClass('active');
 							toggleGen($(this).text());
