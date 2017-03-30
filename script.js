@@ -39,6 +39,9 @@
 			}else if(localStorage.getItem("users")){
 				users = JSON.parse(localStorage.getItem("users"));
 			}
+			if(!localStorage.getItem("allrand")){
+				localStorage.setItem("allrand", app.all)
+			}
 		},
 		inscrinit:function(){
 			$('#inscr').on('submit', function(event){
@@ -58,10 +61,10 @@
 				var tel = $('#tel').val();
 				var password = $('#password').val();
 				var confirmPasswordInput = $('#confirmPasswordInput').val();
-				if(users.length === 0){// si non on inscript
+				if(users.length === 0){
 					ok = true;
 				}
-				else{//si des utilsateurs se sont deja inscript on compare avec les donnée préventes
+				else{
 					var incr = 0;
 					for(var i=0; i<users.length; i++){
 						if(users[i].email == email){
@@ -94,15 +97,14 @@
 					users.push(obj);
 					localStorage.setItem('users', JSON.stringify(users));
 					alert("vous etes bien incriptionné");
-					$(location).attr('href',"connection.html");//renvoyer vers la page de connection
+					$(location).attr('href',"connection.html");
 				}
 
 			});
 		},
-		connectinit:function (argument) {
+		connectinit:function () {
 			$('#connect').on('submit', function (event) {
 				event.preventDefault();
-				// console.log('coucou')
 				var ok = false;
 
 				var pseudo = $('#pseudoemail').val();
@@ -117,7 +119,7 @@
 						if(users[i].password == password){
 							alert('OK');
 							localStorage.setItem("consta", "Y88T*)m.y%8E=%By+{.6@VsoR5{883R0+oi;c&UA81Z2Y,<9d_NFdwyjl]Qx)EmxM(0Xym,VM@aH9L.*wU-5-p%/8Eb5357aG67G[DQG./oX=@eE28!IkqZ0q4vzQ^Y#rSfo02vs=6*0<[5!fQ2>;5s3J61V5mUKv1PeX[a0kCIB)1o~N5DL6n{E0_U@3MmG258@MT/z@$8{nq&^Dd@7=E8A<1vwmsfYt7880#eF5>2ybK1L09~oq7b-O0!X4dIf");
-							$(location).attr('href',"reussiteconnection.html");//renvoyer vers la page de "CONNECTÉ!"
+							$(location).attr('href',"reussiteconnection.html");
 						}else if(users[i].password !== password){
 							console.log('ERREURE MDP OU LOGIN')
 						}
@@ -152,150 +154,153 @@
 				});
 			}, 100);
 		},
-		connectstatus:function(){
-			function auHasard(input){
-				return input[Math.floor(Math.random()*input.length)];
+		randArray: function (input){
+			return input[Math.floor(Math.random()*input.length)];
+		},
+		toggleGen: function (inp){
+			if(select.includes(inp)){
+				select.splice(select.indexOf(inp), 1);
+			}else{
+				select.push(inp);
 			}
-			function toggleGen(inp){
-				if(select.includes(inp)){
-					select.splice(select.indexOf(inp), 1);
+			if(dejapass.includes(inp)){
+				dejapass.splice(dejapass.indexOf(inp), 1);
+			}
+		},
+		randDisplayInit: function(type) {
+			$('#contentconnec')
+			.empty()
+			.append($("<form/>")
+				.on('keypress', function(e){
+					if(e.which === 13){
+						e.preventDefault();
+					}
+				})
+				.attr('id', "validgeninp")
+				.append($("<labell/>")
+					.text("randomqui ? (séparé d'un /)"))
+				.append($("<textarea/>")
+					.css("width", "100%")
+					.css("height", "100px")
+					.attr('id', "geninp")
+					.text(app.all.join("/")))
+				.append($("<input/>")
+					.attr("type", "submit")
+					.val("Validay")));
+
+			$('#validgeninp').on('submit', function (e) {
+				e.preventDefault();
+				var entree = $('#geninp').val();
+				if(!entree){
+					alert("entrez des gens ou des choses a randomiser");
 				}else{
-					select.push(inp);
-				}
-				if(dejapass.includes(inp)){
-					dejapass.splice(dejapass.indexOf(inp), 1);
-				}
-			}
-			function randDisplayInit() {
-				$('#connectstatus').html($("<a/>").text('Déconnection').attr('href', "connection.html").attr('id', 'liendeconnec').on('click', function(e){
-					e.preventDefault();
-					localStorage.setItem("consta", 0);
-					$(location).attr('href', "connection.html");
-				}))
-				var all = ['Quentin', 'Cyril', 'Lesly', 'Carole', 'Jef', 'Odile', 'Patrick', 'Jérome', 'Raphaël', 'Julien', 'David', 'Géna', 'Kévin', 'Thibault', 'Aymeric', 'Victor', 'Laurent', 'Allan'];
-				$('#contentconnec')
-				.empty()
-				.append($("<form/>")
-					.attr('id', "validgeninp")
-					.append($("<labell/>")
-						.text("randomqui ? (séparé d'un /)"))
-					.append($("<textarea/>")
-						.css("width", "100%")
-						.css("height", "100px")
-						.attr('id', "geninp"))
-					.append($("<input/>")
-						.attr("type", "submit")
-						.val("Validay")));
-
-			}
-			if(!localStorage.consta || localStorage.getItem("consta") != "Y88T*)m.y%8E=%By+{.6@VsoR5{883R0+oi;c&UA81Z2Y,<9d_NFdwyjl]Qx)EmxM(0Xym,VM@aH9L.*wU-5-p%/8Eb5357aG67G[DQG./oX=@eE28!IkqZ0q4vzQ^Y#rSfo02vs=6*0<[5!fQ2>;5s3J61V5mUKv1PeX[a0kCIB)1o~N5DL6n{E0_U@3MmG258@MT/z@$8{nq&^Dd@7=E8A<1vwmsfYt7880#eF5>2ybK1L09~oq7b-O0!X4dIf")
-			{
-				$('#connectstatus').html("<a href='inscription.html' id='lienincrip'>Inscription</a><br><a href='connection.html' id='lienconnec'>Conection</a>");
-				localStorage.setItem("consta", 0);
-			}else if(localStorage.consta == "Y88T*)m.y%8E=%By+{.6@VsoR5{883R0+oi;c&UA81Z2Y,<9d_NFdwyjl]Qx)EmxM(0Xym,VM@aH9L.*wU-5-p%/8Eb5357aG67G[DQG./oX=@eE28!IkqZ0q4vzQ^Y#rSfo02vs=6*0<[5!fQ2>;5s3J61V5mUKv1PeX[a0kCIB)1o~N5DL6n{E0_U@3MmG258@MT/z@$8{nq&^Dd@7=E8A<1vwmsfYt7880#eF5>2ybK1L09~oq7b-O0!X4dIf")
-			{
-				
-				randDisplayInit();
-
-				$('#validgeninp').on('submit', function (e) {
-					// $('#validgeninp').remove();
-					e.preventDefault();
-					var entree = $('#geninp').val();
-					if(!entree){
-						alert("entrez des gens ou des choses a randomiser");
-					}else{
-						select = entree.split("/");
-						console.log(select);
-						dejapass = [];
-						$('#contentconnec').html('<div id="receiverbtn" class="flexB">');
-						for(i=0; i<select.length; i++){
-							$('#receiverbtn')
-							.append($('<button/>')
-								.addClass('btngen paspasse')
-								.text(select[i]));
-						};
+					select = entree.split("/");
+					console.log(select);
+					dejapass = [];
+					$('#contentconnec').html('<div id="receiverbtn" class="flexB">');
+					for(i=0; i<select.length; i++){
 						$('#receiverbtn')
 						.append($('<button/>')
-							.text('LANCER RANDOM')
-							.attr('title', 'click sur les gens a sortir du random')
-							.attr('id', 'rand')
-							.addClass('bgcolors')
-							.on('click', function(){
-								if(dejapass.length < select.length){
-									var genRand = auHasard(select);
-									while(dejapass.includes(genRand)){
-										genRand = auHasard(select);
-									}
-									$('.btngen').each(function(){
-										if($(this).text()==genRand){
-											$(this).addClass('bgcolors');
-										}
-									})
-									$('#genRand').append($('<div/>')
-										.addClass('genchoisi colors')
-										.text(genRand));
-									dejapass.push(genRand);
-								}else{
-									dejapass = [];
-									$('.btngen').removeClass('bgcolors');
-									$('.btngen').css('background-color', 'buttonface');
-									$('#genRand').empty();
+							.addClass('btngen paspasse')
+							.text(select[i]));
+					};
+					$('#receiverbtn')
+					.append($('<button/>')
+						.text('LANCER RANDOM')
+						.attr('title', 'click sur les gens a sortir du random')
+						.attr('id', 'rand')
+						.addClass('bgcolors')
+						.on('click', function(){
+							if(dejapass.length < select.length){
+								var genRand = app.randArray(select);
+								while(dejapass.includes(genRand)){
+									genRand = app.randArray(select);
 								}
+								$('.btngen').each(function(){
+									if($(this).text()==genRand){
+										$(this).addClass('bgcolors');
+									}
+								})
+								$('#genRand').append($('<div/>')
+									.addClass('genchoisi colors')
+									.text(genRand));
+								dejapass.push(genRand);
+							}else{
+								dejapass = [];
+								$('.btngen').removeClass('bgcolors');
+								$('.btngen').css('background-color', 'buttonface');
+								$('#genRand').empty();
+							}
+						}))
+					.append($('<button/>')
+						.text('CHANGER')
+						.attr('id', 'changerand')
+						.addClass('bgcolors')
+						.on('click', function(){
+							app.randDisplayInit();
+						}));
+					$('.btngen').on('click', function(){
+						$(this).toggleClass('active');
+						app.toggleGen($(this).text());
+					})
+				}
+			})
+		},
+		all: ['Quentin', 'Cyril', 'Lesly', 'Carole', 'Jef', 'Odile', 'Patrick', 'Jérome', 'Raphaël', 'Julien', 'David', 'Géna', 'Kévin', 'Thibault', 'Aymeric', 'Victor', 'Laurent', 'Allan'],
+		connectstatus:function(){
 
-							}))
-						.append($('<button/>')
-							.text('CHANGER')
-							.attr('id', 'changerand')
-							.addClass('bgcolors')
-							.on('click', function(){
-								randDisplayInit();
+			if(!localStorage.consta || localStorage.getItem("consta") != "Y88T*)m.y%8E=%By+{.6@VsoR5{883R0+oi;c&UA81Z2Y,<9d_NFdwyjl]Qx)EmxM(0Xym,VM@aH9L.*wU-5-p%/8Eb5357aG67G[DQG./oX=@eE28!IkqZ0q4vzQ^Y#rSfo02vs=6*0<[5!fQ2>;5s3J61V5mUKv1PeX[a0kCIB)1o~N5DL6n{E0_U@3MmG258@MT/z@$8{nq&^Dd@7=E8A<1vwmsfYt7880#eF5>2ybK1L09~oq7b-O0!X4dIf"){
 
-							}));
-						$('.btngen').on('click', function(){
-							$(this).toggleClass('active');
-							toggleGen($(this).text());
-						})
+				$('#connectstatus').html("<a href='inscription.html' id='lienincrip'>Inscription</a><br><a href='connection.html' id='lienconnec'>Conection</a>");
+				localStorage.setItem("consta", 0);
+
+			}else if(localStorage.consta == "Y88T*)m.y%8E=%By+{.6@VsoR5{883R0+oi;c&UA81Z2Y,<9d_NFdwyjl]Qx)EmxM(0Xym,VM@aH9L.*wU-5-p%/8Eb5357aG67G[DQG./oX=@eE28!IkqZ0q4vzQ^Y#rSfo02vs=6*0<[5!fQ2>;5s3J61V5mUKv1PeX[a0kCIB)1o~N5DL6n{E0_U@3MmG258@MT/z@$8{nq&^Dd@7=E8A<1vwmsfYt7880#eF5>2ybK1L09~oq7b-O0!X4dIf"){
+
+				$('#connectstatus')
+				.html($("<a/>")
+					.text('Déconnection')
+					.attr('href', "connection.html")
+					.attr('id', 'liendeconnec')
+					.on('click', function(e){
+						e.preventDefault();
+						localStorage.setItem("consta", 0);
+						$(location).attr('href', "connection.html");
+					}))
+
+				this.randDisplayInit();
+			}
+		},
+		choisir: function(inp){
+			if(select.includes(inp)){
+				dejapass.push(inp)
+				$('.btngen').each(function(){
+					if($(this).text()==inp){
+						$(this).addClass('bgcolors');
 					}
-					
+				});
+				$('#genRand').append($('<div/>').addClass('genchoisi colors').text(inp));
+			}
+		},
+		retirer: function(inp){
+			if(select.includes(inp)){
+				dejapass.splice(dejapass.indexOf(inp))
+				$('.btngen').each(function(){
+					if($(this).text()==inp){
+						$(this).removeClass('bgcolors');
+						$(this).css('background-color', '#fff')
+					}
+				});
+				$('.btngenchoisi').each(function(){
+					if($(this).text()==inp){
+						$(this).remove();
+					}
 				})
-				
-				// $('#contentconnec').html()
 			}
 		}
 	};
 
 	$(document).ready(function(){
-		// console.log('coucoucou');
 		app.init()
 	});
 
 })();
-
-function choisir(inp){
-	if(select.includes(inp)){
-		dejapass.push(inp)
-		$('.btngen').each(function(){
-			if($(this).text()==inp){
-				$(this).addClass('bgcolors');
-			}
-		});
-		$('#genRand').append($('<div/>').addClass('genchoisi colors').text(inp));
-	}
-}
-
-function retirer(inp){
-	if(select.includes(inp)){
-		dejapass.splice(dejapass.indexOf(inp))
-		$('.btngen').each(function(){
-			if($(this).text()==inp){
-				$(this).removeClass('bgcolors');
-				$(this).css('background-color', '#fff')
-			}
-		});
-		$('.btngenchoisi').each(function(){
-			if($(this).text()==inp){
-				$(this).remove();
-			}
-		})
-	}
-}
