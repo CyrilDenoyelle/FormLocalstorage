@@ -62,9 +62,8 @@ button.btngen {
 	font:bold 16px Arial;
 	color: white;
 	margin: 2px;
-	transition: font-size 0.5s;
+	transition: font-size 2s;
 }
-
 #rand {
 	width: 150px;
 	border:none;
@@ -89,5 +88,17 @@ button.btngen {
 .btngen.active {
 	font-size: 20px;
 	text-decoration: line-through;
-	transition: font-size 0.5s;
+	transition: font-size 2s;
+}
+
+.radio1 {
+	margin-bottom: 20px;
+}
+
+.radio2 {
+	margin-bottom: 10px;
+}
+
+.mdl-textfield__label {
+	color: white;
 }
