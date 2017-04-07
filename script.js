@@ -128,7 +128,8 @@
 			})
 		},
 		colorinit:function(){
-			var colors = ["DF06FF", "50FFFA", "FFFC00", "FFD300", "2116FF"];
+			notcolrand = true;
+			konacol = false;
 			function randcol (arg) {
 				if(!prevrand){
 					var prevrand = arg.length+1
@@ -140,19 +141,47 @@
 				prevrand = rand;
 				return rand;
 			};
-			var inter = setInterval(function(){
-				$('a').each(function(){
-					$(this).css("color", '#'+randcol(colors));
-				});
-				$('#linkfavicon').attr("href", randcol(colors)+'.ico');
+			var colors = ["DF06FF", "50FFFA", "FFFC00", "FFD300", "2116FF"];
+			if ( window.addEventListener ) {
+				var kkeys = [], konami = "38,38,40,40,37,39,37,39,66,65";
+				window.addEventListener("keydown", function(e){
+					kkeys.push( e.keyCode );
+					if ( kkeys.toString().indexOf( konami ) >= 0 ) {
 
-				$('.colors').each(function(){
-					$(this).css("color", '#'+randcol(colors));
-				});
-				$('.bgcolors').each(function(){
-					$(this).css("background-color", '#'+randcol(colors));
-				});
-			}, 100);
+						if(notcolrand){
+							var inter = setInterval(function(){
+								if(konacol){
+									$('a').each(function(){
+										$(this).css("color", '#'+randcol(colors));
+									});
+									$('#linkfavicon').attr("href", randcol(colors)+'.ico');
+
+									$('.colors').each(function(){
+										$(this).css("color", '#'+randcol(colors));
+									});
+									$('.bgcolors').each(function(){
+										$(this).css("background-color", '#'+randcol(colors));
+									});
+								}
+							}, 100);
+						notcolrand = false;
+						}
+						konacol = !konacol;
+						$('a').each(function(){
+							$(this).css("color", "");
+						});
+						$('#linkfavicon').attr("href", randcol(colors)+'.ico');
+
+						$('.colors').each(function(){
+							$(this).css("color", "white");
+						});
+						$('.bgcolors').each(function(){
+							$(this).css("background-color", "#eee");
+						});
+							kkeys = [];
+					}
+				}, true);
+			}
 		},
 		randArray: function (input){
 			return input[Math.floor(Math.random()*input.length)];
