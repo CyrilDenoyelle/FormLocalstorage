@@ -3,12 +3,60 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Inscription</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-blue.min.css">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	<link rel="stylesheet" href="style-base.css" />
 	<link rel="stylesheet" href="style.css" />
 	<link id="linkfavicon" rel="icon" href="" />
 </head>
-<body>
-	<div class="container flexBC">
+<body>  
+<div class="container flexBC">
+	<a href="index.html">Accueil</a>
+	<a href="inscription.html">Inscription</a>
+	<form class="container" id="inscr" action="#">
+		<div class="flexBC">
+
+			<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect radio1" for="sx1">
+				<input type="radio" id="sx1" class="mdl-radio__button" value="Mme" name="civilitée">
+				<span class="mdl-radio__label">Mme</span>
+			</label>
+
+			<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect radio2" for="sx2">
+				<input type="radio" id="sx2" class="mdl-radio__button" value="Mr" name="civilitée">
+				<span class="mdl-radio__label">Mr</span>
+			</label>
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z]*" id="nom" name="nom" value="tonnom"/>
+				<label class="mdl-textfield__label" for="nom">Nom</label>
+			</div>
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z]*" id="prenom" name="prenom" value="tonprenom" />
+				<label class="mdl-textfield__label" for="prenom">Prenom</label>
+			</div>
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z,0-9]*" id="pseudo" name="pseudo" value="tonpseudo" />
+				<label class="mdl-textfield__label" for="pseudo">Pseudo</label>
+			</div>
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="email" id="email" name="email" value="tonemail@machin.truk" />
+				<label class="mdl-textfield__label" for="email">Email</label>
+			</div>
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="password" pattern="[A-Z,a-z,0-9]*" id="password" value="motdepasse" name="password" />
+				<label class="mdl-textfield__label" for="password">Password</label>
+			</div>
+
+		</div>
+		<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" name="submit">Submit</button>
+	</form>
+</div>
+	<!-- <div class="container flexBC">
 		<a href="index.html">Accueil</a>
 		<a href="connection.html">Connection</a>
 		<form id='inscr'>
@@ -19,12 +67,16 @@
 			</fieldset>
 			<label for="nom">Nom<abbr title="coucou">*</abbr></label>
 			<input type="text" required name="nom" id="nom" placeholder="entrez votre nom" value="Cyr"><br>
+
 			<label for="prenom">Prénom<abbr title="ce champs est obligatoire">*</abbr></label>
 			<input type="text" required name="prenom" id="prenom" placeholder="entrez votre prénom" value="Den"><br>
+
 			<label for="pseudo">Pseudo<abbr title="ce champs est obligatoire et vous permetra de vous connecter">*</abbr></label>
 			<input type="text" required name="pseudo" id="pseudo" placeholder="entrez votre identifiant de connection" value="see"><br>
+
 			<label for="email">Email<abbr title="ce champs est obligatoire">*</abbr></label>
 			<input type="email" required name="email" id="email" placeholder="entrez votre adresse mail" value="Cyrden@hhh"><br>
+			
 			<label for="tel">Tel<abbr title="ce champs est obligatoire">*</abbr></label>
 			<input type="text" required name="tel" id="tel" placeholder="entrez votre numero de tel" value="1234567890"><br>
 
@@ -35,7 +87,7 @@
 			<div class="" id="passwordStrength"></div>
 			<input type="submit" class="colors" name="submit" value="Submit">
 		</form>
-	</div>
+	</div> -->
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="script.js"></script>

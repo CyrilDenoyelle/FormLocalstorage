@@ -91,3 +91,15 @@ button.btngen {
 	text-decoration: line-through;
 	transition: font-size 2s;
 }
+
+.radio1 {
+	margin-bottom: 20px;
+}
+
+.radio2 {
+	margin-bottom: 10px;
+}
+
+.mdl-textfield__label {
+	color: white;
+}
